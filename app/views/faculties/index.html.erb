@@ -1,0 +1,31 @@
+<head>
+    <style>
+    body{
+        text-align:center;
+
+    }
+    table, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding:10px;
+        text-align:center;
+      }
+    </style>
+</head>
+<body>
+<center>
+    <h1>Faculty</h1>
+    <table>
+        <tr><td>Faculty name</td><td>Show</td><td>Edit</td><td>Delete</td></tr>
+        <% @faculties.each do |faculty| %>
+        <tr>
+            <td> <%= faculty.first_name %> <%= faculty.last_name %></td>
+            <td><%= button_to 'Show', faculty_path(faculty), method: 'get' %></td>
+            <td><%= button_to 'Edit', edit_faculty_path(faculty), method: 'get' %></td>
+            <td><%= button_to 'Delete', faculty_path(faculty), method: 'delete' %></td>
+        </tr>
+    <% end %>
+    </table>
+    <%= link_to "Add a Faculty Member", new_faculty_path %>
+</center>
+</body>

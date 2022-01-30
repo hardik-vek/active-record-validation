@@ -1,0 +1,35 @@
+<head>
+    <style>
+    body{
+        text-align:center;
+    }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding:10px;
+        text-align:center;
+      }
+    </style>
+</head>
+<body>
+<center>
+    <h1>Faculty </h1>
+
+    <table>
+
+        <tr><td>Faculty first_name</td><td>Faculty last_name</td>
+        <td>Faculty phone number</td><td>Faculty email</td><td>Faculty Dob</td><td>Faculty designation</td><td>Edit</td><td>Delete</td></tr>
+        <tr>
+        <td><%=@faculty.first_name%></td>
+        <td><%=@faculty.last_name%></td>
+        <td><%=@faculty.phone_number%></td>
+        <td><%=@faculty.email%></td>
+        <td><%=@faculty.birth_date%></td>
+        <td><%=@faculty.designation%></td>
+        <td><%= button_to 'Edit', edit_faculty_path(@faculty), method: 'get'%></td>
+        <td><%= button_to 'Remove', faculty_path(@faculty), method: 'delete' %></td>  
+        </tr>
+
+    </table>
+</center>
+</body> 
