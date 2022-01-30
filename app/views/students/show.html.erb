@@ -1,0 +1,33 @@
+<head>
+    <style>
+    body{
+        text-align:center;
+    }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding:10px;
+        text-align:center;
+      }
+    </style>
+</head>
+<body>
+<center>
+    <h1>Student </h1>
+
+    <table>
+
+        <tr><td>Student first_name</td><td>Student last_name</td>
+        <td>Student birth date</td><td>Student department</td><td>Edit</td><td>Delete</td></tr>
+        <tr>
+        <td><%=@student.first_name%></td>
+        <td><%=@student.last_name%></td>
+        <td><%=@student.birth_date%></td>
+        <td><%=@student.department%></td>
+        <td><%= button_to 'Edit', edit_student_path(@student), method: 'get'%></td>
+        <td><%= button_to 'Remove', student_path(@student), method: 'delete' %></td>  
+        </tr>
+
+    </table>
+</center>
+</body> 
