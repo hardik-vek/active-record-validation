@@ -1,6 +1,9 @@
+# frozen_string_literal :true
 class FacultiesController < ApplicationController
+  before_action :id_action, only: [:show, :edit, :update, :destroy]
+
   def index
-    @faculties=Faculty.all
+    @faculties = Faculty.all
   end
 
   def new
@@ -8,25 +11,22 @@ class FacultiesController < ApplicationController
   end
 
   def show
-    @faculty = Faculty.find(params[:id])
   end
 
   def create
-    f= Faculty.create(faculty_params)
-    if f.valid?
+    faculty = Faculty.create(faculty_params)
+    if faculty.valid?
       redirect_to faculties_path
     else
-      flash[:errors] = f.errors.full_messages
+      flash[:errors] = faculty.errors.full_messages
       redirect_to new_faculty_path
     end
   end
 
   def edit
-    @faculty = Faculty.find(params[:id])
   end
 
   def update
-    @faculty = Faculty.find(params[:id])
     @faculty.update(faculty_params)
     if @faculty.valid?
       redirect_to faculties_path
@@ -37,13 +37,18 @@ class FacultiesController < ApplicationController
   end
 
   def destroy
-    @faculty = Faculty.find(params[:id])
     @faculty.destroy
 
     redirect_to faculties_path
   end
 
   def faculty_params
-    params.require(:faculty).permit(:first_name, :last_name, :birth_date, :designation,:email,:phone_number)
+    params.require(:faculty).permit(:first_name, :last_name, :birth_date, :designation, :email, :phone_number, :username)
+  end
+
+  def id_action
+    @faculty = Faculty.find(params[:id])
   end
 end
+
+

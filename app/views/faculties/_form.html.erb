@@ -1,8 +1,9 @@
 <%if flash[:errors] %>
-<% flash[:errors].each do |error| %>
-<p style = "color:red"><%= error %></p>
+  <% flash[:errors].each do |error| %>
+    <p style = "color:red"><%= error %></p>
+  <%end%>
 <%end%>
-<%end%>
+
 <%= form_with model: @faculty do |form| %>
     <div>
       <%= form.label :first_name, style: "display: block" %>
@@ -36,3 +37,5 @@
       <br/><%= form.submit %>
     </div>
 <% end %>
+
+

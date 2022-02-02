@@ -1,6 +1,9 @@
+# frozen_string_literal :true
 class StudentsController < ApplicationController
+  before_action :id_action, only: [:show, :edit, :update, :destroy]
+
   def index
-    @students=Student.all
+    @students = Student.all
   end
 
   def new
@@ -8,7 +11,7 @@ class StudentsController < ApplicationController
   end
 
   def create
-    s= Student.create(student_params)
+    s = Student.create(student_params)
     if s.valid?
       redirect_to students_path
     else
@@ -18,11 +21,9 @@ class StudentsController < ApplicationController
   end
 
   def edit
-    @student = Student.find(params[:id])
   end
 
   def update
-    @student = Student.find(params[:id])
     @student.update(student_params)
     if @student.valid?
       redirect_to students_path
@@ -33,17 +34,21 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @student = Student.find(params[:id])
   end
 
   def destroy
-    @student = Student.find(params[:id])
     @student.destroy
 
     redirect_to students_path
   end
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :birth_date, :department,:terms_of_usage)
+    params.require(:student).permit(:first_name, :last_name, :birth_date, :department, :terms_of_usage)
+  end
+
+  def id_action
+    @student = Student.find(params[:id])
   end
 end
+
+
