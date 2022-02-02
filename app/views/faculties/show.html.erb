@@ -13,7 +13,7 @@
                 <td>Faculty email</td>
                 <td>Faculty Dob</td>
                 <td>Faculty designation</td>
-                <%# <td>Faculty username</td> %>
+                <td>Faculty username</td>
                 <td>Edit</td>
                 <td>Delete</td>
             </tr>
@@ -25,7 +25,7 @@
                 <td><%=@faculty.email%></td>
                 <td><%=@faculty.birth_date%></td>
                 <td><%=@faculty.designation%></td>
-                <%# <td><%=@username</td> %>
+                <td><%=@faculty.username%></td>
                 <td><%= button_to 'Edit', edit_faculty_path(@faculty), method: 'get'%></td>
                 <td><%= button_to 'Remove', faculty_path(@faculty), method: 'delete' %></td>  
             </tr>

@@ -39,11 +39,16 @@ class Faculty < ApplicationRecord
   end
 
   after_validation :check_birthday, :check_email
-  # after_validation :check_email
 
-  # after_create do |faculty|
-  #   self.username = first_name + last_name + phone_number.to_s
-  # end
+  before_create :username
+  def username
+    self.username = first_name + last_name + phone_number.to_s
+  end
+
+  before_update :username
+  def username
+    self.username = first_name + last_name + phone_number.to_s
+  end
 
   private
 
