@@ -1,0 +1,40 @@
+<%if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <p style = "color:red"><%= error %></p>
+  <%end%>
+<%end%>
+
+<%= form_with model: @student do |form| %>
+
+    <div>
+      <%= form.label :first_name %><br>
+      <%= form.text_field :first_name %>
+    </div>
+
+    <div>   
+      <%= form.label :last_name %><br>
+      <%= form.text_field :last_name %>
+    </div>
+
+    <div>
+      <%= form.label :birth_date %><br>
+      <%= form.date_field :birth_date %>
+    </div>
+
+    <div>
+      <%= form.label :department %><br>
+      <%= form.text_field :department %>
+    </div>
+
+    <div>
+      <%= form.label :terms_of_usage %><br>
+      <%= form.check_box :terms_of_usage %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
+
+<% end %>
+
+
